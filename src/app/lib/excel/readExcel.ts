@@ -46,9 +46,9 @@ const getRows = (workbook: WorkBook, sheetIndex: number) => {
     jsonRaw[row][titles[col]] = value;
   });
 
-  const json = Object.values(jsonRaw);
+  const json: ExcelMapping = Object.values(jsonRaw);
 
-  return json;
+  return { titles: Object.values(titles), data: json };
 };
 
 interface ReadExcelProps {
@@ -56,13 +56,16 @@ interface ReadExcelProps {
   sheetIndex?: number;
 }
 
-export function readExcel({ buffer, sheetIndex = 0 }: ReadExcelProps) {
+export function readExcel({ buffer, sheetIndex = 0 }: ReadExcelProps): {
+  titles: string[];
+  data: ExcelMapping | null;
+} {
   try {
     const workbook = read(buffer);
 
     return getRows(workbook, sheetIndex);
   } catch (error) {
     console.error(error);
-    return null;
+    return { titles: [], data: null };
   }
 }

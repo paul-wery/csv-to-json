@@ -3,7 +3,11 @@ import { ExcelMapping, readExcel } from "../readExcel";
 
 interface Props {
   sheetIndex?: number;
-  onDataLoaded: (file: File, data: ExcelMapping | null) => void;
+  onDataLoaded: (
+    file: File,
+    titles: string[],
+    data: ExcelMapping | null
+  ) => void;
 }
 
 const excelInputId = "import-excel-input";
@@ -18,12 +22,12 @@ export const useLoadExcel = ({ sheetIndex, onDataLoaded }: Props) => {
     const file = files && files[0];
 
     if (file) {
-      const data = readExcel({
+      const { titles, data } = readExcel({
         buffer: await file.arrayBuffer(),
         sheetIndex,
       });
 
-      onDataLoaded(file, data);
+      onDataLoaded(file, titles, data);
       target.value = "";
     }
   };

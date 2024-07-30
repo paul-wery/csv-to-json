@@ -5,7 +5,11 @@ import { ExcelMapping } from "@/app/lib/excel/readExcel";
 
 type Props = {
   sheetIndex?: number;
-  onDataLoaded: (file: File, data: ExcelMapping | null) => void;
+  onDataLoaded: (
+    file: File,
+    titles: string[],
+    data: ExcelMapping | null
+  ) => void;
 } & Readonly<{
   children: React.ReactNode;
 }>;
