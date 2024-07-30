@@ -1,0 +1,274 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  /* background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb)); */
+  background-color: #0f172a;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer base {
+  :root {
+    --star-color: #1C2349;
+
+    --job-seeker-primary: 220 100% 63%;
+    --job-seeker-primary-200: 220 100% 94%;
+    --job-seeker-primary-300: 209 98% 81%;
+    --job-seeker-light-primary: 220 100% 94%;
+
+
+    --company-primary: 238 67% 60%;
+    --company-primary-200: 220 100% 94%;
+    --company-primary-300: 240 70% 89%;
+    --company-light-primary: 236 100% 97%;
+
+
+    --primary: 220 100% 63%;
+    --primary-300: 209 98% 81%;
+
+    --green: 165 74% 62%;
+    --red: 8 100% 75%;
+
+
+    --primary-foreground: 0 0% 100%;
+
+    --primary2: 230 48% 21%;
+    --border-primary: 209 70% 82%;
+    --border-job-seeker-primary: 209 70% 82%;
+    --border-company-primary: 240 70% 89%;
+
+    --background: 0 0% 100%;
+    --foreground: 224 71.4% 4.1%;
+    /* --card: 0 0% 100%;
+        --card-foreground: 224 71.4% 4.1%; */
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+    --secondary: 358 67% 60%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+    --accent: 220 14.3% 95.9%;
+    --accent-foreground: 220.9 39.3% 11%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 262.1 83.3% 57.8%;
+    --radius: 0.5rem;
+    --container-padding: 1.25rem;
+  }
+
+  .job-seeker {
+    --primary: var(--job-seeker-primary);
+    --primary-200: var(--job-seeker-primary-200);
+    --primary-300: var(--job-seeker-primary-300);
+    --border-primary: var(--border-job-seeker-primary);
+    --primary-light: var(--job-seeker-light-primary);
+  }
+
+  .company {
+    --primary: var(--company-primary);
+    --primary-200: var(--company-primary-200);
+    --primary-300: var(--company-primary-300);
+    --border-primary: var(--border-company-primary);
+    --primary-light: var(--company-light-primary);
+  }
+
+  .job-seeker .light-container {
+    --primary: var(--job-seeker-primary-300);
+  }
+
+  .company .light-container {
+    --primary: var(--company-primary-300);
+    --primary-foreground: var(--primary2);
+  }
+
+  .dark-container {
+    --primary: var(--primary2);
+  }
+
+  .dark {
+    --background: 224 71.4% 4.1%;
+    --foreground: 210 20% 98%;
+    /* --card: 224 71.4% 4.1%;
+        --card-foreground: 210 20% 98%; */
+    --popover: 224 71.4% 4.1%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 263.4 70% 50.4%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+    --accent: 215 27.9% 16.9%;
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 263.4 70% 50.4%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    position: relative;
+    /* Fix issue with <Background /> not appearing */
+    z-index: -1;
+    /* Fix issue with <Background /> not appearing */
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .circle-blue-pattern {
+    @apply bg-[url('/assets/images/half_circle_blue.svg')] bg-no-repeat bg-center;
+  }
+
+  .circle-violet-pattern {
+    @apply bg-[url('/assets/images/half_circle_violet.svg')] bg-no-repeat bg-center;
+  }
+
+  @variants responsive {
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      /* IE and Edge */
+      scrollbar-width: none;
+      /* Firefox */
+    }
+
+    /* width */
+    .force-scrollbar::-webkit-scrollbar {
+      border-radius: 100%;
+      width: 5px;
+    }
+
+    /* Handle */
+    .force-scrollbar::-webkit-scrollbar-thumb {
+      background: #B9B9F7;
+      border-radius: 10px;
+    }
+
+    /* track */
+    .force-scrollbar::-webkit-scrollbar-track {
+      background: #E8E8FE;
+    }
+  }
+}
+
+/*
+We hide the emulator warning at the bottom of the page.
+Please remove the following class if you want to display it
+ */
+.firebase-emulator-warning {
+  display: none;
+}
+
+/* Fix phone input */
+
+.react-tel-input .form-control {
+  border: 1px solid hsl(var(--input)) !important;
+  border-radius: 16px !important;
+}
+
+.selected-flag,
+.selected-flag:focus,
+.selected-flag:hover,
+.selected-flag:active {
+  padding-left: 16px !important;
+  background-color: #F9F9F9 !important;
+  border-radius: 16px !important;
+}
+
+.shadow-card {
+  background: white;
+}
+
+.text-shadow {
+  text-shadow: 1px 1px 1px #AAAAAA;
+}
+
+.blog h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.blog h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.blog h3 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.blog h4 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.blog h5 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.blog h6 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.blog p {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
