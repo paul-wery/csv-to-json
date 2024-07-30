@@ -1,9 +1,7 @@
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
 import { configuration } from "./configuration";
-
-const inter = Inter({ subsets: ["latin"] });
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: configuration.siteName,
@@ -21,8 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <main className={"w-full h-full"}>{children}</main>
+        <Analytics />
       </body>
     </html>
   );
