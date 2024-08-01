@@ -108,7 +108,7 @@ export function CsvToJson() {
       </div>
       <div className="font-semibold">Variables names :</div>
       {Object.keys(titles).length > 0 && (
-        <div className="flex items-center gap-4">
+        <div className="flex flex-wrap items-center gap-4">
           {Object.entries(titles).map(([key, value], index, array) => (
             <React.Fragment key={index}>
               <div className="flex items-center">
@@ -142,14 +142,19 @@ export function CsvToJson() {
         value={json}
       />
       <div className="flex gap-4">
-        <Button type="button" onClick={onDownload}>
+        <Button type="button" onClick={onDownload} disabled={!json}>
           <div className="flex items-center gap-2">
             <ArrowDownCircleIcon className="w-6 h-6" />
             Download
           </div>
         </Button>
 
-        <Button type="button" variant="outlinePrimary" onClick={onClipboard}>
+        <Button
+          type="button"
+          variant="outlinePrimary"
+          onClick={onClipboard}
+          disabled={!json}
+        >
           <div className="flex items-center gap-2">
             <ClipboardIcon className="w-6 h-6" />
             Copy to clipboard

@@ -9,9 +9,9 @@ export default function Page() {
       <section className="bg-white text-black flex flex-1 justify-center px-4 pb-8 md:pb-0">
         <div className="w-full max-w-[1000px]">
           <h1 className="text-[#153b95] w-full text-3xl md:text-4xl font-bold leading-[50px] md:leading-[80px]">
-            CSV {">"} JSON
+            JSON {">"} CSV
           </h1>
-          <p>To get started, upload your data from CSV Excel File.</p>
+          <p>To get started, upload or paste your data from JSON File.</p>
           <div className="mt-8">
             <CsvToJson />
           </div>

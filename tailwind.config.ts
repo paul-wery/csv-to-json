@@ -93,6 +93,10 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("daisyui")],
+
+  daisyui: {
+    prefix: "daisyui-", // prefix for daisyUI classnames (components, modifiers and responsive class names. Not colors)
+  },
 };
 export default config;

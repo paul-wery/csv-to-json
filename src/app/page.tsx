@@ -21,6 +21,12 @@ export default function Home() {
                 >
                   Csv to json
                 </a>
+                <a
+                  href="/json-to-csv"
+                  className="bg-white text-[#153b95] p-4 font-semibold rounded-lg hover:brightness-90"
+                >
+                  Json to csv
+                </a>
               </div>
             </div>
           </div>

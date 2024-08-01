@@ -12,14 +12,13 @@ export type ExcelMapping = Record<string, string | number>[];
 
 const getRows = (workbook: WorkBook, sheetIndex: number) => {
   const sheet = Object.values(workbook.Sheets)[sheetIndex];
-  const rows: ExcelMapping = [];
   const titlesKey = getRow(
     Object.keys(sheet).find((key) => !key.startsWith("!"))!
   );
   const titles: Record<string, string> = {};
 
   Object.keys(sheet).forEach((key) => {
-    if (key.includes(titlesKey)) {
+    if (getRow(key) === titlesKey) {
       titles[getCol(key)] = sheet[key].v;
     }
   });
